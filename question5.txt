@@ -1,0 +1,8 @@
+
+// Question 5: Image not Updating
+
+When converting a design with the [FireJet Figma Plugin](https://www.firejet.io/plugin), sometimes when the image is updated in our database, 
+when visiting the website, the image still remains unupdated when viewing on codesandbox
+
+1. Suggest why the image has not been updated
+2. Suggest how we could get the image to be updated when viewed in codesandbox

@@ -1,0 +1,23 @@
+
+// Question 6: `fs is undefined`
+
+When using build tools like vite or tailwind, sometimes we encounter the error `fs is undefined`
+
+1. Name some cases where fs is defined and some cases where it is undefined
+fs (File System) is a module available in Node.js, and its availability varies based on the environment:
+
+a. Node.js Environment: In a Node.js environment, the fs module is defined and available for reading and writing files.
+You can use it to perform various file operations, such as reading, writing, and manipulating files.
+
+b. Browser Environment: In a browser environment, the fs module is not available by default. When you encounter the "fs is undefined" error, 
+it typically means that your code is attempting to use Node.js-specific modules or APIs in a browser environment. 
+Browsers do not have direct access to the file system for security reasons.
+
+2. In the case that fs is undefined, suggest how we can make fs defined, so that we can continue using build tools like vite and tailwind.
+To make fs defined in a browser-based project, you need to simulate or replicate the functionality you require without directly using Node.js's fs module. Some options include:
+
+a. Use a Mock or Fake fs: There are libraries and packages available that provide mock implementations of the fs module for the browser environment. 
+These allow you to use similar code for reading and writing files, but it operates in-memory or using browser storage mechanisms. Examples of such libraries include browserify-fs and memfs.
+
+b. Third-Party Libraries: You can also look for third-party libraries that provide file manipulation capabilities specifically designed for browser-based projects. 
+Libraries like fs-extra-browser or fs-browser are examples of such alternatives.  

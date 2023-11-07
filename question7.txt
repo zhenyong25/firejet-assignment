@@ -1,2 +1,17 @@
 
-// Error: Get styles from element in iFrame 
+// Question 7: For loop not working 
+
+        const users = {}
+
+        userIds.forEach(async (userId) => {
+            const user = await getUser(userId)
+            users[userId] = user
+        })
+
+        console.log(users)
+
+1. Explain why the above code is not working
+
+
+
+2. Explain hwo to fix the above code 
