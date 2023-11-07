@@ -1,0 +1,6 @@
+// Qestion 3: Cannot call API 
+
+Trying to call the APIs at [https://api.github.com](https://api.github.com/) from the [FireJet Tweak](https://www.firejet.io/tweak) frontend throws an error.
+
+1. Suggest the type of error and their reason
+2. Suggest a way to overcome the error, with some javascript snippets to support your answer

@@ -1,0 +1,31 @@
+
+// Question 4: Get styles from element in iFrame 
+
+       var iframe = document.getElementById("myFrame");
+       var elmnt = iframe.contentWindow.document.getElementsByTagName("H1")[0];
+       const styles = getComputedStyle(elmnt)
+
+// Possible reasons 
+1. Cross-Origin Security: Web security restrictions often prevent accessing the content of an iframe if 
+it comes from a different origin (cross-origin). If the iframe's content is from a different domain, 
+you may not be able to access its DOM or styles directly due to the Same-Origin Policy.
+
+2. Timing Issue: Accessing the content of an iframe should be done after the iframe has loaded its content.
+If the iframe is not fully loaded when you try to access its content, your code may not work correctly.
+
+// Solution 
+
+        var iframe = document.getElementById("myFrame");
+        iframe.onload = function() {
+        var iframeContent = iframe.contentWindow.document;
+
+        // Check if the iframe has an H1 element
+        var h1Element = iframeContent.getElementsByTagName("H1")[0];
+
+        if (h1Element) {
+            var styles = iframe.contentWindow.getComputedStyle(h1Element);
+            console.log(styles);
+        } else {
+            console.log("H1 element not found in the iframe");
+        }
+        };
