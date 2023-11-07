@@ -12,6 +12,29 @@
 
 1. Explain why the above code is not working
 
-
+a. The forEach loop iterates over each userId.
+b. For each userId, it calls the getUser function using await. This means it waits for the getUser function to complete before moving on to the next userId.
+c. However, the problem is that the loop doesn't wait for the inner asynchronous getUser calls to complete. It immediately moves on to the next iteration, creating multiple asynchronous operations in parallel.
+d. As a result, the console.log(users) statement is executed before any of the getUser calls have completed, and users is empty or incomplete at that point.
 
 2. Explain hwo to fix the above code 
+
+        const users = {};
+        const userPromises = userIds.map(async (userId) => {
+        const user = await getUser(userId);
+        users[userId] = user;
+        });
+
+        Promise.all(userPromises)
+        .then(() => {
+            console.log(users);
+        })
+        .catch((error) => {
+            console.error("Error occurred:", error);
+        });
+
+a. We use map to create an array of promises, one for each getUser call, and store them in userPromises.
+b. We then use Promise.all to wait for all the promises in userPromises to resolve. This ensures that all getUser calls have completed before proceeding.
+c. The then block of Promise.all logs the users object once all the promises have resolved. It also includes a catch block for error handling.
+
+This way, you ensure that the users object contains the data from all getUser calls before you log it.
