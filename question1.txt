@@ -1,12 +1,13 @@
 // Original Code 
-export async function arrayToBase64(array: Uint8Array) {
-    const canvas = document.createElement('canvas');
-    const ctx = canvas.getContext('2d');
-  
-    const imageData = await decode(canvas, ctx!, array);
-  
-    return imageData;
-  }
+
+    export async function arrayToBase64(array: Uint8Array) {
+        const canvas = document.createElement('canvas');
+        const ctx = canvas.getContext('2d');
+      
+        const imageData = await decode(canvas, ctx!, array);
+      
+        return imageData;
+      }
 
 // Error 
 The error "document is undefined" is occurring because your code is attempting to use the document object, 
@@ -22,14 +23,15 @@ In a web browser, the document object represents the web page's content and stru
 2. Modify your code to work in a Node.js environment if that is your intention. In a Node.js environment, you can't use the document object. 
 You might need to re-implement the functionality without relying on browser-specific features like canvas.
 
-// Fixed Code 
-import { createCanvas } from 'canvas';
+// Modification
 
-export async function arrayToBase64(array: Uint8Array) {
-  const canvas = createCanvas(/* width */, /* height */);
-  const ctx = canvas.getContext('2d');
+    import { createCanvas } from 'canvas';
 
-  const imageData = await decode(canvas, ctx!, array);
+    export async function arrayToBase64(array: Uint8Array) {
+      const canvas = createCanvas(/* width */, /* height */);
+      const ctx = canvas.getContext('2d');
 
-  return imageData;
-}
+      const imageData = await decode(canvas, ctx!, array);
+
+      return imageData;
+    }

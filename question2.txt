@@ -1,0 +1,26 @@
+
+// Question 2: Error in try{} catch{} block 
+
+        try {
+        figma.showUI('<div>Hello</div>');
+        } catch {}
+
+// Error
+The 'figma.showUI' is an invalid operation, and it will result in an error if you wrap it in a 
+"try...catch" block. The 'catch' block is empty ('{}'), so it doesn't perform any specific 
+error handling or logging,
+
+        figma.showUI('<div>Hello</div>');
+        figma.codegen.on('generate', () => {});
+
+// Modification
+To avoid the crash, you can use conditional checks or other mechanisms to control the execution 
+of such code based on the mode in which your Figma plugin is running.
+
+        if (!figma.command || figma.command.type !== 'codegen') {
+        figma.showUI('<div>Hello</div>');
+        }
+
+        figma.codegen.on('generate', () => {
+        // Code to handle code generation
+        });
